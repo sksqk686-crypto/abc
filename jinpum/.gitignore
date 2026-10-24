@@ -1,5 +1,6 @@
 작업/*/video.mp4
 작업/*/*.part.mp4
+작업/*/*.parts/
 작업/*/영상받기_기록.txt
 .env
 __pycache__/
