@@ -3,16 +3,30 @@ chcp 65001 >nul
 cd /d "%~dp0"
 echo ==== 진품명품 감정 카드: 설치 ====
 
-where python >nul 2>nul
-if errorlevel 1 (
-  echo [1/4] Python 설치 중...
-  winget install -e --id Python.Python.3.12 --accept-package-agreements --accept-source-agreements
+set PY=
+py -3 -c "import sys" >nul 2>nul && set PY=py -3
+if not defined PY (
+  python -c "import sys" >nul 2>nul && set PY=python
+)
+if not defined PY (
+  echo [1/4] Python 설치 중... 잠시 기다려 주세요.
+  winget install -e --id Python.Python.3.12 --scope user --accept-package-agreements --accept-source-agreements
+set PY=
+  py -3 -c "import sys" >nul 2>nul && set PY=py -3
+  if not defined PY (
+    python -c "import sys" >nul 2>nul && set PY=python
+  )
+  
+)
+if not defined PY (
   echo.
-  echo Python 설치가 끝났습니다. 이 창을 닫고 install.bat 을 한 번 더 실행해 주세요.
+  echo Python 설치를 마무리하려면 이 창을 닫고 install.bat 을 한 번 더 실행해 주세요.
+  echo 그래도 이 메시지가 나오면 https://www.python.org/downloads/ 에서 직접 설치해 주세요.
+  echo  - 설치 첫 화면에서 "Add python.exe to PATH" 체크
   pause
   exit /b
 )
-echo [1/4] Python 확인 완료
+echo [1/4] Python 확인 완료: %PY%
 
 where ffmpeg >nul 2>nul
 if errorlevel 1 (
@@ -23,8 +37,9 @@ if errorlevel 1 (
 )
 
 echo [3/4] 필요한 모듈 설치 중...
-python -m pip install -r requirements.txt
-python -m playwright install chromium
+%PY% -m pip install -r requirements.txt
+if errorlevel 1 goto fail
+%PY% -m playwright install chromium
 
 if exist .env goto done
 echo.
@@ -34,6 +49,11 @@ set /p GKEY=키:
 
 :done
 echo.
-echo 설치 완료! 이제 run.bat 을 더블클릭하세요.
-echo (ffmpeg를 방금 설치했다면 이 창을 닫은 뒤 run.bat 을 실행하세요)
+echo 설치 완료! 이 창을 닫고 run.bat 을 더블클릭하세요.
+pause
+exit /b
+
+:fail
+echo.
+echo 설치 중 오류가 났습니다. 이 창을 캡처해서 보내 주세요.
 pause

@@ -173,9 +173,17 @@ def build_outputs(args) -> None:
         w.writerows(rows)
 
 
+def _count(text: str) -> int:
+    """'60', '60회차', ' 60 ' 모두 60으로 받는다."""
+    digits = re.sub(r"\D", "", text)
+    if not digits:
+        raise argparse.ArgumentTypeError(f"회차 수는 숫자로 입력해 주세요: {text!r}")
+    return int(digits)
+
+
 def main() -> None:
     ap = argparse.ArgumentParser(description="TV쇼 진품명품 감정 카드 만들기")
-    ap.add_argument("--latest", type=int, default=3, help="최신 N회차 (기본 3)")
+    ap.add_argument("--latest", type=_count, default=3, help="최신 N회차 (기본 3)")
     ap.add_argument("--episodes", help="회차 번호 목록, 예: 1543,1542")
     ap.add_argument("--no-video", action="store_true", help="KBS 다시보기 영상을 받지 않음")
     ap.add_argument("--youtube", action="append", default=[], help="회차=유튜브URL (여러 번 가능)")
