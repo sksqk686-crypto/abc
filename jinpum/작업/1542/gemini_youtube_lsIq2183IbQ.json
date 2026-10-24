@@ -1,0 +1,45 @@
+{
+ "items": [
+  {
+   "order": 3,
+   "name": "백자 청채 보상화문 접시",
+   "price": "2,000만 원",
+   "features": [
+    "약 200년 전 제작 추정 관요 자기",
+    "'원(元)'자 등의 희소한 문양"
+   ],
+   "appraisal_points": [
+    "백자 청채 접시에 보기 드문 문양, 희소성이 높은 작품",
+    "숙련된 도공의 솜씨가 돋보이는 뛰어난 제작 수준"
+   ],
+   "answers": [
+    "관요에서 만든 백자는 일부 남아 있음",
+    "의뢰품과 같은 청채 백자는 매우 귀함",
+    "200여 년 전 제작 추정",
+    "200여 년이 지났지만 깨진 곳 없이 보존 상태가 매우 양호",
+    "얇은 접시에 보상화문을 새긴 것은 희소한 편"
+   ],
+   "category": "자기",
+   "result_card_time": "12:56",
+   "photo_time": "00:03"
+  }
+ ],
+ "_usage": {
+  "promptTokenCount": 73108,
+  "candidatesTokenCount": 285,
+  "totalTokenCount": 73393,
+  "promptTokensDetails": [
+   {
+    "modality": "TEXT",
+    "tokenCount": 662
+   },
+   {
+    "modality": "VIDEO",
+    "tokenCount": 72446
+   }
+  ],
+  "serviceTier": "standard"
+ },
+ "_model": "gemini-3.8-flash",
+ "_source": "https://www.youtube.com/watch?v=lsIq2183IbQ"
+}

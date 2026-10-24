@@ -1,0 +1,15 @@
+{
+ "episode": 1542,
+ "date": "20261011",
+ "subtitle": "그림 - 책거리 / 민속품 - 자개 찬합 / 도자기 - 백자 청채 보상화문 접시",
+ "titles": [
+  "그림 - 책거리",
+  "민속품 - 자개 찬합",
+  "도자기 - 백자 청채 보상화문 접시"
+ ],
+ "program_id": "PS-2026170726-01-000",
+ "vod_page": "https://vod.kbs.co.kr/index.html?source=episode&sname=vod&stype=vod&program_code=T2000-0057&program_id=PS-2026170726-01-000&broadcast_complete_yn=N&local_station_code=00&section_code=05&section_sub_code=04",
+ "play_urls": [
+  "https://mediafactory.play.kbs.co.kr/vod/2026/10/11/6acafc84bc7fa96e22ba123f/video/20261011_121009_500k_1791688164674.m3u8"
+ ]
+}

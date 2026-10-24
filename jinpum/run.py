@@ -69,10 +69,10 @@ def process_episode(ep: dict, photos: list[str], args) -> None:
                 print(f"  ! 영상 처리 실패: {e}")
         if res:
             analyses.append(res)
-    for i, url in enumerate(args.youtube.get(ep["episode"], [])):
-        cache = os.path.join(wdir, f"gemini_youtube{i + 1}.json")
-        res = _load(cache)
-        if res is None:
+    for url in args.youtube.get(ep["episode"], []):
+        vid = re.sub(r"\W", "", url.split("v=")[-1].split("&")[0])[-11:]
+        cache = os.path.join(wdir, f"gemini_youtube_{vid}.json")
+        if not os.path.exists(cache):
             print(f"  유튜브 클립 분석 중… {url}")
             try:
                 res = gemini.analyze(url, ep["titles"])
@@ -80,11 +80,15 @@ def process_episode(ep: dict, photos: list[str], args) -> None:
                 _save(cache, res)
             except Exception as e:
                 print(f"  ! 유튜브 분석 실패: {e}")
-        if res:
-            analyses.append(res)
+    # 예전에 분석해 둔 유튜브 클립도 모두 쓴다
+    for f in sorted(os.listdir(wdir)):
+        if f.startswith("gemini_youtube") and f.endswith(".json"):
+            analyses.append(_load(os.path.join(wdir, f)))
 
+    # 직접 입력(캡처 보고 옮겨 적은 값)이 영상 분석보다 우선
+    manual = _load(os.path.join(wdir, "manual.json"), {"items": []})
     by_order: dict[int, dict] = {}
-    for res in analyses:
+    for res in [manual] + analyses:
         for it in res.get("items", []):
             by_order.setdefault(int(it.get("order") or 0), it)
 
@@ -108,6 +112,9 @@ def process_episode(ep: dict, photos: list[str], args) -> None:
         category = info.get("category") if info.get("category") in gemini.CATEGORIES else ""
         if not category:
             category = TITLE_HINT.get(title.split(" - ")[0].strip(), "")
+        if not category:
+            prev = _load(os.path.join(wdir, "items.json"), [])
+            category = next((p["category"] for p in prev if p["order"] == n and p.get("category")), "")
         if not category:
             photo = open(photo_file, "rb").read() if os.path.exists(photo_file) else None
             category = gemini.classify(photo, title)

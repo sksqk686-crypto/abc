@@ -1,0 +1,41 @@
+{
+ "items": [
+  {
+   "order": 3,
+   "name": "백자 십자무늬 투각 필통",
+   "price": "4,500만 원",
+   "features": [
+    "정교한 십자무늬 투각이 돋보이는 백자 필통",
+    "갑발을 사용해 만든 고급 도자기"
+   ],
+   "appraisal_points": [
+    "투각 기법으로 제작한 귀한 도자기",
+    "관요에서 제작한 수준 높은 작품",
+    "갑발에 넣어 구워 티끌 없이 깨끗한 상태"
+   ],
+   "answers": [],
+   "category": "자기",
+   "result_card_time": "11:51",
+   "photo_time": "00:05"
+  }
+ ],
+ "_usage": {
+  "promptTokenCount": 67117,
+  "candidatesTokenCount": 203,
+  "totalTokenCount": 67568,
+  "promptTokensDetails": [
+   {
+    "modality": "VIDEO",
+    "tokenCount": 66436
+   },
+   {
+    "modality": "TEXT",
+    "tokenCount": 681
+   }
+  ],
+  "thoughtsTokenCount": 248,
+  "serviceTier": "standard"
+ },
+ "_model": "gemini-3.7-flash",
+ "_source": "https://www.youtube.com/watch?v=0fnGH2VIbIE"
+}

@@ -1,0 +1,40 @@
+{
+ "items": [
+  {
+   "order": 1,
+   "name": "소치 허련 <십군자화> 병풍",
+   "price": "2,000만 원",
+   "features": [
+    "매난국죽과 함께 군자를 상징하는 소재로 구성한 십군자화",
+    "추사 김정희가 극찬한 소치 허련의 말년 작품"
+   ],
+   "appraisal_points": [
+    "간결하면서도 무게감 있는 필력이 느껴지는 허련의 말년 작품",
+    "제작 연대에 비해 깨끗하고 훌륭한 보관 상태"
+   ],
+   "answers": [],
+   "category": "서화",
+   "result_card_time": "11:27",
+   "photo_time": "00:01"
+  }
+ ],
+ "_usage": {
+  "promptTokenCount": 64830,
+  "candidatesTokenCount": 210,
+  "totalTokenCount": 65977,
+  "promptTokensDetails": [
+   {
+    "modality": "VIDEO",
+    "tokenCount": 64165
+   },
+   {
+    "modality": "TEXT",
+    "tokenCount": 665
+   }
+  ],
+  "thoughtsTokenCount": 937,
+  "serviceTier": "standard"
+ },
+ "_model": "gemini-3.5-flash",
+ "_source": "https://www.youtube.com/watch?v=I2-3PPRlD7M"
+}

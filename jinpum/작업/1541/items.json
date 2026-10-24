@@ -1,0 +1,53 @@
+[
+ {
+  "episode": 1541,
+  "date": "20261004",
+  "order": 1,
+  "title": "그림 - 소치 허련 '십군자화' 병풍",
+  "name": "소치 허련 <십군자화> 병풍",
+  "number": "20261004-1(1541)",
+  "category": "서화",
+  "price": "2,000만 원",
+  "features": [
+   "매난국죽과 함께 군자를 상징하는 소재로 구성한 십군자화",
+   "추사 김정희가 극찬한 소치 허련의 말년 작품"
+  ],
+  "appraisal": [
+   "간결하면서도 무게감 있는 필력이 느껴지는 허련의 말년 작품",
+   "제작 연대에 비해 깨끗하고 훌륭한 보관 상태"
+  ],
+  "appraisal_source": "감정 포인트",
+  "photo_file": "photo1.jpg",
+  "filled": true
+ },
+ {
+  "episode": 1541,
+  "date": "20261004",
+  "order": 2,
+  "title": "민속품 - 경대",
+  "name": "경대",
+  "number": "20261004-2(1541)",
+  "category": "목제",
+  "price": "",
+  "features": [],
+  "appraisal": [],
+  "appraisal_source": "",
+  "photo_file": "photo2.jpg",
+  "filled": false
+ },
+ {
+  "episode": 1541,
+  "date": "20261004",
+  "order": 3,
+  "title": "글씨 - 조선어문경위",
+  "name": "조선어문경위",
+  "number": "20261004-3(1541)",
+  "category": "고문서",
+  "price": "",
+  "features": [],
+  "appraisal": [],
+  "appraisal_source": "",
+  "photo_file": "photo3.jpg",
+  "filled": false
+ }
+]

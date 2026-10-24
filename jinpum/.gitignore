@@ -1,4 +1,5 @@
-작업/
+작업/*/video.mp4
+작업/*/*.part.mp4
 .env
 __pycache__/
 *.pyc

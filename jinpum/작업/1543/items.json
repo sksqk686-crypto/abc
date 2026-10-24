@@ -1,0 +1,59 @@
+[
+ {
+  "episode": 1543,
+  "date": "20261018",
+  "order": 1,
+  "title": "그림 - 의재 허백련 '춘경산수화'",
+  "name": "의재 허백련 <춘경산수화>",
+  "number": "20261018-1(1543)",
+  "category": "서화",
+  "price": "300만 원",
+  "features": [
+   "허백련의 시·서·화의 알찬 구성이 돋보이는 작품",
+   "갈필과 남종화 화풍이 잘 드러난 그림"
+  ],
+  "appraisal": [
+   "허백련 화가의 시·서·화가 어우러진 전성기 작품"
+  ],
+  "appraisal_source": "감정 포인트",
+  "photo_file": "photo1.jpg",
+  "filled": true
+ },
+ {
+  "episode": 1543,
+  "date": "20261018",
+  "order": 2,
+  "title": "무엇에 쓰는 물건인고? - 조족등과 딱딱이",
+  "name": "조족등과 딱딱이",
+  "number": "20261018-2(1543)",
+  "category": "기타",
+  "price": "",
+  "features": [],
+  "appraisal": [],
+  "appraisal_source": "",
+  "photo_file": "photo2.jpg",
+  "filled": false
+ },
+ {
+  "episode": 1543,
+  "date": "20261018",
+  "order": 3,
+  "title": "도자기 - 백자 십자무늬 투각 필통",
+  "name": "백자 십자무늬 투각 필통",
+  "number": "20261018-3(1543)",
+  "category": "자기",
+  "price": "4,500만 원",
+  "features": [
+   "정교한 십자무늬 투각이 돋보이는 백자 필통",
+   "갑발을 사용해 만든 고급 도자기"
+  ],
+  "appraisal": [
+   "투각 기법으로 제작한 귀한 도자기",
+   "관요에서 제작한 수준 높은 작품",
+   "갑발에 넣어 구워 티끌 없이 깨끗한 상태"
+  ],
+  "appraisal_source": "감정 포인트",
+  "photo_file": "photo3.jpg",
+  "filled": true
+ }
+]
