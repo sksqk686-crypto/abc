@@ -20,6 +20,21 @@ M3U8_RE = re.compile(r"https?:[^\s\"'<>]+?\.m3u8[^\s\"'<>]*")
 MIN_EPISODE_SEC = 20 * 60  # 이보다 짧으면 광고·예고로 보고 다른 주소를 쓴다
 
 
+def _is_m3u8(url: str) -> bool:
+    return urllib.parse.urlparse(url).path.lower().endswith(".m3u8")
+
+
+def _m3u8_in_request(url: str) -> list[str]:
+    """요청 주소 자체가 재생목록이거나, 쿼리 값에 재생목록 주소가 들어 있으면 꺼낸다.
+    (KBS jwplayer는 통계 ping의 mu= 값에 서명된 본편 주소를 실어 보낸다)"""
+    found = [url] if _is_m3u8(url) else []
+    for values in urllib.parse.parse_qs(urllib.parse.urlparse(url).query).values():
+        for v in values:
+            if v.startswith("http") and _is_m3u8(v):
+                found.append(v)
+    return found
+
+
 def _launch(p, headless: bool):
     """PC에 깔린 Edge/Chrome을 먼저 쓴다 (Playwright 기본 Chromium은 H.264 영상을 못 틀어서
     KBS 플레이어가 영상 주소를 요청하지 않는다)."""
@@ -39,6 +54,7 @@ class _Fetcher:
     def __init__(self, ctx, page, log: list[str]):
         self.ctx, self.page, self.log = ctx, page, log
         self.headers = {"Referer": "https://vod.kbs.co.kr/", "Origin": "https://vod.kbs.co.kr"}
+        self.add_query = False  # 하위 주소에 부모 서명을 붙여야 하는지 (한 번 알면 기억)
 
     def get(self, url: str) -> bytes | None:
         try:
@@ -72,11 +88,16 @@ class _Fetcher:
     def get_child(self, parent: str, uri: str) -> tuple[str, bytes | None]:
         """재생목록 안의 상대 주소를 받는다. 서명이 부모 주소 쿼리에 있으면 붙여서 다시 시도."""
         url = urllib.parse.urljoin(parent, uri)
-        data = self.get(url)
         q = urllib.parse.urlparse(parent).query
-        if data is None and q and "?" not in uri:
-            url = url + "?" + q
-            data = self.get(url)
+        signed = url + "?" + q if q and "?" not in uri else url
+        if self.add_query and signed != url:
+            return signed, self.get(signed)
+        data = self.get(url)
+        if data is None and signed != url:
+            data = self.get(signed)
+            if data is not None:
+                self.add_query = True
+            url = signed
         return url, data
 
 
@@ -172,8 +193,10 @@ def download_episode(ep: dict, out_path: str, headless: bool = True) -> str:
 
             def on_request(req):
                 log.append(f"{req.method} {req.url[:300]}")
-                if ".m3u8" in req.url and req.url not in req_cands:
-                    req_cands.append(req.url)
+                for u in _m3u8_in_request(req.url):
+                    if u not in req_cands:
+                        req_cands.append(u)
+                        log.append(f"[후보] {u[:200]}")
 
             def on_response(resp):
                 try:
