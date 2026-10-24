@@ -1,0 +1,4 @@
+작업/
+.env
+__pycache__/
+*.pyc
