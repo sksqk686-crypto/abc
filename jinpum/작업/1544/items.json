@@ -1,0 +1,47 @@
+[
+ {
+  "episode": 1544,
+  "date": "20261025",
+  "order": 1,
+  "title": "그림 - 칠성제 풍속도",
+  "name": "칠성제 풍속도",
+  "number": "20261025-1(1544)",
+  "category": "서화",
+  "price": "",
+  "features": [],
+  "appraisal": [],
+  "appraisal_source": "",
+  "photo_file": "photo1.jpg",
+  "filled": false
+ },
+ {
+  "episode": 1544,
+  "date": "20261025",
+  "order": 2,
+  "title": "무엇에 쓰는 물건인고? - 인궤",
+  "name": "인궤",
+  "number": "20261025-2(1544)",
+  "category": "기타",
+  "price": "",
+  "features": [],
+  "appraisal": [],
+  "appraisal_source": "",
+  "photo_file": "photo2.jpg",
+  "filled": false
+ },
+ {
+  "episode": 1544,
+  "date": "20261025",
+  "order": 3,
+  "title": "도자기 - 흑유 장군",
+  "name": "흑유 장군",
+  "number": "20261025-3(1544)",
+  "category": "자기",
+  "price": "",
+  "features": [],
+  "appraisal": [],
+  "appraisal_source": "",
+  "photo_file": "photo3.jpg",
+  "filled": false
+ }
+]
