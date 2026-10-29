@@ -4,6 +4,7 @@ from __future__ import annotations
 import datetime as _dt
 import json
 import re
+import urllib.parse
 import urllib.request
 
 PROGRAM_CODE = "T2000-0057"
@@ -17,8 +18,18 @@ VOD_PAGE = (
 )
 
 
+def _normalize_url(url: str) -> str:
+    """사진 URL에 공백·한글 등 미인코딩 문자가 그대로 올 때가 있어 요청 전에 퍼센트 인코딩한다."""
+    parts = urllib.parse.urlsplit(url)
+    path = urllib.parse.quote(parts.path, safe="/%")
+    query = urllib.parse.quote(parts.query, safe="=&%")
+    return urllib.parse.urlunsplit((parts.scheme, parts.netloc, path, query, parts.fragment))
+
+
 def _get(url: str, binary: bool = False):
-    req = urllib.request.Request(url, headers={"User-Agent": UA, "Referer": "https://program.kbs.co.kr/"})
+    req = urllib.request.Request(
+        _normalize_url(url), headers={"User-Agent": UA, "Referer": "https://program.kbs.co.kr/"}
+    )
     with urllib.request.urlopen(req, timeout=60) as r:
         data = r.read()
     return data if binary else json.loads(data)
