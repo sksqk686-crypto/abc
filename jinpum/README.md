@@ -18,7 +18,12 @@ KBS 'TV쇼 진품명품' 회차를 Gemini가 보고, 의뢰품마다 감정 카�
 KBS 다시보기는 **한국 IP에서만 재생**됩니다. 해외 서버(클라우드)에서는 전체 영상을 볼 수 없어서,
 유튜브 클립이 있는 의뢰품(보통 회차당 1점)만 채울 수 있습니다. 한국에 있는 PC에서 실행하면 회차 전체를 분석합니다.
 
-## 처음 한 번만 설치
+## Windows에서 가장 쉬운 방법
+
+1. `install.bat` 더블클릭 (Python·ffmpeg·필요한 모듈 설치, Gemini 키 입력) — 처음 한 번만
+2. `run.bat` 더블클릭 → 몇 회차를 할지 입력 → 끝나면 `결과` 폴더가 열림
+
+## 처음 한 번만 설치 (직접 할 때)
 
 1. **Python 3.10 이상**: https://www.python.org/downloads/ (설치할 때 "Add python.exe to PATH" 체크)
 2. **ffmpeg**: Windows는 명령 프롬프트에서 `winget install Gyan.FFmpeg`, Mac은 `brew install ffmpeg`
